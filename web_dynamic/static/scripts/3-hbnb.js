@@ -34,7 +34,7 @@ function fetchPlaces () {
     success: function (data) {
       for (let i = 0; i < data.length; i++) {
         const place = data[i];
-	$('.places ').append('<article><h2>' + place.name + '</h2><div class="price_by_night"><p>$' + place.price_by_night + '</p></div><div class="information"><div class="max_guest"><div class="guest_image"></div><p>' + place.max_guest + '</p></div><div class="number_rooms"><div class="bed_image"></div><p>' + place.number_rooms + '</p></div><div class="number_bathrooms"><div class="bath_image"></div><p>' + place.number_bathrooms + '</p></div></div><div class="description"><p>' + place.description + '</p></div></article>');
+	$('.places ').append('<article><div class="title_box"><h2>' + place.name + '</h2><div class="price_by_night"><p>$' + place.price_by_night + '</p></div></div><div class="information"><div class="max_guest"><i class="fa fa-users fa-3x" aria-hidden="true"></i><br/><p>' + place.max_guest + ' Guests' + '</p></div><div class="number_rooms"><i class="fa fa-bed fa-3x" aria-hidden="true"></i><br/><p>' + place.number_rooms + ' Bedrooms' + '</p></div><div class="number_bathrooms"><i class="fa fa-bath fa-3x" aria-hidden="true"></i><br/><p>' + place.number_bathrooms +' Bathrooms' + '</p></div></div><div class="description"><p>' + place.description + '</p></div></article>');
       }
     }
   });
