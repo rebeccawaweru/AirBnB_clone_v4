@@ -15,6 +15,15 @@ function init () {
   fetchPlaces();
   $('button[type="button"]').click(function() {
     fetchPlaces(amenityObj);
+  $('h2:contains("Reviews") + span').click(function() {
+    if ($(this).text() === 'show') {
+      fetchReviews();
+    $(this).text('hide');
+    } else {
+      $('.review').remove();
+      $(this).text('show');
+    }
+  })
   });
 }
 
@@ -71,6 +80,23 @@ function fetchPlaces (amenities) {
 	'</div>',
 	'</article>'];
 	$('SECTION.places').append(article.join(''));
+      }
+    },
+    error: function (error) {
+      console.log(error);
+    }
+  });
+}
+
+function fetchReviews() {
+  const URL_REVIEW = `http://${HOST}:5001/api/v1/reviews/`;
+  $.ajax({
+    url: URL_REVIEW,
+    type: 'GET',
+    success: function (response) {
+      for (const r in response) {
+        const review = `<div class="review">${r.content}</div>`
+	$('SECTION.reviews').append(review);
       }
     },
     error: function (error) {

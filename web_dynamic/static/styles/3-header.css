@@ -17,8 +17,8 @@ header #api_status {
      position: relative;
      top: 30%;
      right: 30px;
-     background-color: #cccccc
+     background-color: #cccccc;
 }
 header .available {
-     background-color: #ff545f
+     background-color: #ff545f;
 }
