@@ -11,19 +11,19 @@ function init () {
     const names = Object.keys(amenityObj);
     $('.amenities h4').text(names.sort().join(', '));
   });
+  fetch('http://0.0.0.0:5001/api/v1/status/')
+    .then(response => response.json())
+    .then(data => {
+      const statusDiv = document.querySelector('#api_status');
+      if (data.status === 'OK') {
+        statusDiv.classList.add('available');
+      } else {
+        statusDiv.classList.remove('available');
+      }
+    });
+    .catch(error => console.error('Error:', error));
   fetchPlaces();
 }
-fetch('http://0.0.0.0:5001/api/v1/status/')
-  .then(response => response.json())
-  .then(data => {
-    const statusDiv = document.querySelector('#api_status');
-     if (data.status === 'OK') {
-       statusDiv.classList.add('available');
-     } else {
-	statusDiv.classList.remove('available');
-     }
-  })
-  .catch(error => console.error('Error:', error));
 function fetchPlaces () {
   $.ajax({
     type: 'POST',
